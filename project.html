@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects • Ramalakshmi Iyappan</title>
+  <meta name="description" content="Personal portfolio of Ram Thiruvadi">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./style.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="./index.html">Ramalakshmi Iyappan</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample07">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="./about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="./project.html">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="flex-grow-1 pt-5">
+  <section class="container py-5">
+  <h1 class="fw-bold mb-4">My Projects</h1>
+
+  <!-- Calculator Project -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+      <div>
+        <h5 class="card-title">Calculator App</h5>
+        <p class="card-text text-muted">A responsive calculator built with HTML, CSS, and JavaScript.</p>
+        <!-- <a href="https://github.com/YOUR_USERNAME/calculator-app" target="_blank" class="btn btn-sm btn-outline-dark me-2">
+          <i class="bi bi-github"></i> GitHub
+        </a> -->
+      </div>
+      <div>
+        <a href="./projects/calc.html" class="btn btn-primary">Open Calculator</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Weather App Project -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+      <div>
+        <h5 class="card-title">Weather App</h5>
+        <p class="card-text text-muted">A live weather app using the OpenWeatherMap API.</p>
+        <!-- <a href="https://github.com/YOUR_USERNAME/weather-app" target="_blank" class="btn btn-sm btn-outline-dark me-2">
+          <i class="bi bi-github"></i> GitHub
+        </a> -->
+      </div>
+      <div>
+        <a href="./projects/weather.html" class="btn btn-primary">Open Weather App</a>
+      </div>
+    </div>
+  </div>
+
+
+   <!-- Rock Paper Scissors Game -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+      <div>
+        <h5 class="card-title">Rock Papers Scissors</h5>
+        <p class="card-text text-muted">Fun & Interactive Rock Paper Scissor Game</p>
+        <!-- <a href="https://github.com/YOUR_USERNAME/weather-app" target="_blank" class="btn btn-sm btn-outline-dark me-2">
+          <i class="bi bi-github"></i> GitHub
+        </a> -->
+      </div>
+      <div>
+        <a href="./projects/rockpaper.html" class="btn btn-primary">Play Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- E-commerce Project -->
+  <!-- <div class="card mb-4 shadow-sm">
+    <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+      <div>
+        <h5 class="card-title">E-commerce Website</h5>
+        <p class="card-text text-muted">A grocery e-commerce website with weather/time API integration.</p> -->
+        <!-- <a href="https://github.com/YOUR_USERNAME/grocery-ecommerce" target="_blank" class="btn btn-sm btn-outline-dark me-2">
+          <i class="bi bi-github"></i> GitHub
+        </a> -->
+      <!-- </div>
+      <div> -->
+        <!-- Live deployment link with GitHub token -->
+        <!-- <a href="https://raw.githack.com/YOUR_USERNAME/grocery-ecommerce/main/index.html?token=YOUR_GIT_ACCESS_TOKEN"
+           class="btn btn-success" target="_blank">
+          Live Project
+        </a>
+      </div>
+    </div>
+  </div>
+  </section> -->
+
+
+  <section class="container mt-5">
+  <div class="row">
+    <!-- 🧮 Prime Number Checker -->
+    <div class="col-md-6 mb-4">
+      <div class="p-4 border rounded shadow-sm h-100">
+        <h2 class="text-center mb-4">Prime Number Checker</h2>
+
+        <input type="number" id="numberInput" class="form-control mb-3" placeholder="Enter a number" />
+        <button class="btn btn-primary w-100 mb-3" onclick="checkIfPrime()">Check</button>
+        <p id="resultText" class="mt-3 text-center fw-semibold"></p>
+      </div>
+    </div>
+
+    <!-- 📁 File Preview -->
+    <div class="col-md-6 mb-4">
+      <div class="p-4 border rounded shadow-sm h-100">
+        <h3 class="fw-semibold text-center">File Preview</h3>
+        <p class="text-muted small text-center mb-2">Choose a .txt or image file to preview locally (no upload).</p>
+
+        <input type="file" id="fileInput" accept=".txt,image/*" class="form-control mb-3" />
+        <div id="filePreview" class="mt-3 text-center"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <h1 class="h4 mt-3">JQuery Demo</h1>
+<a href="./jQuery.html" id="sendButton" class="btn btn-primary" type="button" disabled>Chat</a> -->
+
+
+<h2>Detect CSS Transition in JavaScript</h2>
+<div class="box" id="myBox"></div>
+<button id="animateBtn">Start Transition</button>
+<div id="status">Waiting...</div>
+
+
+</main>
+<footer class="bg-dark text-light py-4 mt-auto">
+  <div class="container text-center small">
+    <div>&copy; <span id="year"></span> Ramalakshmi Iyappan. All rights reserved.</div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./script.js"></script>
+</body>
+</html>
+

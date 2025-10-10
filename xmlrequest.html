@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>XMLHttpRequest Demo (GET & POST)</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; padding: 16px; }
+    pre  { background:#f6f8fa; padding:10px; border-radius:8px; max-height:260px; overflow:auto; }
+    button { margin-right: 6px; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+  <h3>XMLHttpRequest only</h3>
+  <button id="btnGet">XHR GET</button>
+  <button id="btnPost">XHR POST</button>
+  <pre id="out"></pre>
+
+  <script>
+    const API = 'https://jsonplaceholder.typicode.com/posts';
+
+    // Helper: perform XHR
+    function xhrRequest(method, url, body, onSuccess, onError) {
+      const xhr = new XMLHttpRequest();
+      xhr.open(method, url, true);
+      if (body) xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState !== 4) return;
+        if (xhr.status >= 200 && xhr.status < 300) {
+          // try to parse JSON; fall back to text
+          let data = xhr.responseText;
+          try { data = JSON.parse(xhr.responseText); } catch {}
+          onSuccess && onSuccess(data, xhr);
+        } else {
+          onError && onError(new Error('HTTP ' + xhr.status + ' ' + xhr.statusText), xhr);
+        }
+      };
+      xhr.onerror = function () {
+        onError && onError(new Error('Network error'), xhr);
+      };
+      xhr.send(body ? JSON.stringify(body) : null);
+    }
+
+    // GET example: fetch 3 items
+    document.getElementById('btnGet').addEventListener('click', function () {
+      this.disabled = true;
+      xhrRequest('GET', API + '?_limit=3', null,
+        (data) => {
+          document.getElementById('out').textContent = format(data);
+          this.disabled = false;
+        },
+        (err) => {
+          document.getElementById('out').textContent = String(err);
+          this.disabled = false;
+        }
+      );
+    });
+
+    // POST example: create an item
+    document.getElementById('btnPost').addEventListener('click', function () {
+      this.disabled = true;
+      const payload = { title: 'Hello', body: 'From XHR only', userId: 1 };
+      xhrRequest('POST', API, payload,
+        (data) => {
+          document.getElementById('out').textContent = format(data);
+          this.disabled = false;
+        },
+        (err) => {
+          document.getElementById('out').textContent = String(err);
+          this.disabled = false;
+        }
+      );
+    });
+
+    function format(v) { return typeof v === 'string' ? v : JSON.stringify(v, null, 2); }
+  </script>
+</body>
+</html>
