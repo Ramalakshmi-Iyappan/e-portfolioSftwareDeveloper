@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1.0">
+ <title>Chat App</title>
+ <link rel="stylesheet" href="../base.css">
+</head>
+<body>
+
+    <h1>Web Socket Chat</h1>
+    <div id="messages">
+        <input type="text" id="messageInput" placeholder="Type your message">
+        <button id="sendButton">Send</button>
+    </div>
+
+
+    <script>
+        const socket = new WebSocket('ws://localhost:3000');
+
+        const message = document.getElementById('messages');
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+
+        socket.onmessage = (event) => {
+            const message = event.data;
+
+            
+            if(message instanceof Blob){
+                const reader = new FileReader();
+
+                reader.onload = (event) =>{
+                    const textMessage = event.target.result;
+                    displayMessage(textMessage);
+                }
+
+                reader.readAsText(message);
+            } else {
+                displayMessage(message);
+            }
+
+        };
+
+        sendButton.addEventListener('click', () => {
+            const message = messageInput.value;
+            socket.send(message);
+            messageInput.value = '';
+        })
+
+        function displayMessage(message){
+            messages.innerHTML += `<p>${message}<p>`;
+        }
+
+    </script>
+</body>
+</html>
